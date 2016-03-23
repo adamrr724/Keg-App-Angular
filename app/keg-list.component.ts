@@ -3,19 +3,19 @@ import { KegComponent } from './keg.component';
 import { Keg } from './keg.model';
 // import { EditTaskDetailsComponent } from './edit-keg-details.component';
 // import { NewTaskComponent } from './new-task.component';
-// import {DonePipe} from './done.pipe';
+import {LowPipe} from './low.pipe';
 
 @Component({
   selector: 'keg-list',
   inputs: ['kegList'],
   // outputs: ['onKegSelect'],
-  // pipes: [DonePipe],
+  pipes: [LowPipe],
   directives: [KegComponent],
   template:
     `
     <ul>
       <keg-display
-        *ngFor="#currentKeg of kegList"
+        *ngFor="#currentKeg of kegList | low:filterLow"
         [keg]= "currentKeg"
         (onKegPour)="refreshKeg($event)">
         </keg-display>
@@ -41,7 +41,7 @@ export class KegListComponent {
   public kegList: Keg[];
   // public onKegSelect: EventEmitter<Keg>;
   public selectedKeg: Keg;
-  // public filterDone: string = "notDone";
+  public filterLow: string = "notLow";
   constructor() {
     // this.onKegSelect = new EventEmitter();
   }
