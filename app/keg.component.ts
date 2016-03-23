@@ -17,7 +17,12 @@ import { Keg } from './keg.model';
     <button (click)="kegPour(keg)"
       name="button"
       [class.hidden]="keg.pints === 0">
-    Pour Beer</button>
+      Pour Beer
+    </button>
+    <div class="well empty"
+      [class.hidden]="keg.pints !== 0">
+      Out of Beer!
+    </div>
   </div>
   `
 })
