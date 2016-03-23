@@ -1,16 +1,16 @@
 import { Component, EventEmitter } from 'angular2/core';
 import { KegComponent } from './keg.component';
 import { Keg } from './keg.model';
-// import { EditTaskDetailsComponent } from './edit-keg-details.component';
-// import { NewTaskComponent } from './new-task.component';
+import { EditKegDetailsComponent } from './edit-keg-details.component';
+import { NewKegComponent } from './new-keg.component';
 import {LowPipe} from './low.pipe';
 
 @Component({
   selector: 'keg-list',
   inputs: ['kegList'],
-  // outputs: ['onKegSelect'],
+  outputs: ['onKegSelect'],
   pipes: [LowPipe],
-  directives: [KegComponent],
+  directives: [KegComponent, NewKegComponent, EditKegDetailsComponent],
   template:
     `
     <select (change)="onChange($event.target.value)" class="filter">
@@ -22,10 +22,17 @@ import {LowPipe} from './low.pipe';
     <ul>
       <keg-display
         *ngFor="#currentKeg of kegList | low:filterLow"
+        (click)="kegClicked(currentKeg)"
+        [class.selected]="currentKeg === selectedKeg"
         [keg]= "currentKeg"
         (onKegPour)="refreshKeg($event)">
         </keg-display>
     </ul>
+    <edit-keg-details *ngIf="selectedKeg" [keg]="selectedKeg"
+    (onEditKeg)="refreshKeg($event)">
+    // </edit-keg-details>
+    <br>
+    <new-keg (onSubmitNewKeg)="createKeg($event)"></new-keg>
     `
 
 
@@ -41,11 +48,11 @@ import {LowPipe} from './low.pipe';
 })
 export class KegListComponent {
   public kegList: Keg[];
-  // public onKegSelect: EventEmitter<Keg>;
+  public onKegSelect: EventEmitter<Keg>;
   public selectedKeg: Keg;
   public filterLow: string = "notLow";
   constructor() {
-    // this.onKegSelect = new EventEmitter();
+    this.onKegSelect = new EventEmitter();
   }
   refreshKeg(newKeg: Keg) {
     // console.log("event received and refreshKeg run");
@@ -55,22 +62,21 @@ export class KegListComponent {
         keg.type = newKeg.type;
         keg.ABV = newKeg.ABV;
         keg.price = newKeg.price;
-        keg.type = newKeg.type;
         keg.pints = newKeg.pints;
         // console.log("The edited keg is ", keg);
       }
     }
   }
-  // kegClicked(clickedKeg: Keg): void {
-  //   this.selectedKeg = clickedKeg;
-  //   // this.onKegSelect.emit(clickedKeg);
-  // }
-  // createKeg(newKeg: Keg): void {
-  //   this.kegList.push(
-  //     new Keg(newKeg.description, this.kegList.length, newKeg.priority, newKeg.category)
-  //   );
-  //   console.log(this.kegList[this.kegList.length-1]);
-  // }
+  kegClicked(clickedKeg: Keg): void {
+    this.selectedKeg = clickedKeg;
+    // this.onKegSelect.emit(clickedKeg);
+  }
+  createKeg(newKeg: Keg): void {
+    console.log(newKeg);
+    this.kegList.push(
+      new Keg(newKeg.name, newKeg.type, newKeg.ABV, newKeg.price)
+    );
+  }
   onChange(filterOption) {
     this.filterLow = filterOption;
   }

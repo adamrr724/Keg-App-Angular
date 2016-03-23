@@ -22,7 +22,7 @@ import { Keg } from './keg.model';
       <h4>Info: </h4>
       <h5>ABV: {{ keg.ABV }}%</h5>
       <h5>Price: \${{ keg.price }}</h5>
-      <h5>Capacity: {{ keg.pints }}/124</h5>
+      <h5>Capacity: {{ keg.pints/124 * 100 }}%</h5>
     </div>
     <div class="col-sm-4">
       <button (click)="kegPour(keg)"
