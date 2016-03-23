@@ -14,7 +14,10 @@ import { Keg } from './keg.model';
     </ul>
     <h4>Price: \${{ keg.price }}</h4>
     <h4>Capacity: {{ keg.pints }}/124</h4>
-    <button (click)="kegPour(keg)" name="button">Pour Beer</button>
+    <button (click)="kegPour(keg)"
+      name="button"
+      [class.hidden]="keg.pints === 0">
+    Pour Beer</button>
   </div>
   `
 })
@@ -26,7 +29,6 @@ export class KegComponent {
   }
   kegPour(keg: Keg) {
     if (keg.pints > 0) keg.pints --;
-    else alert("Out of Beer!");
     this.onKegPour.emit(keg);
   }
 }
