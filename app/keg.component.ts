@@ -30,10 +30,10 @@ import { Keg } from './keg.model';
         [class.hidden]="keg.pints === 0">
         Pour Beer
       </button>
-      <h2 *ngIf="(keg.pints/124 * 100).toFixed(2) > 75" class="full">FULL</h2>
-      <h2 *ngIf="76 > (keg.pints/124 * 100).toFixed(2) && (keg.pints/124 * 100).toFixed(2) > 40" class="notFull">PLENTY LEFT</h2>
-      <h2 *ngIf="41 > (keg.pints/124 * 100).toFixed(2) && (keg.pints/124 * 100).toFixed(2) > 10" class="low">GETTING LOW!</h2>
-      <h2 *ngIf="(keg.pints/124 * 100).toFixed(2) <= 10" class="danger">DANGER! EMPTY SOON!</h2>
+      <h2 *ngIf="(keg.pints/124 * 100).toFixed(2) > 75.00" class="well full">FULL</h2>
+      <h2 *ngIf="75.00 >= (keg.pints/124 * 100).toFixed(2) && (keg.pints/124 * 100).toFixed(2) > 40.00" class=" well notFull">PLENTY LEFT</h2>
+      <h2 *ngIf="40.00 >= (keg.pints/124 * 100).toFixed(2) && (keg.pints/124 * 100).toFixed(2) > 10.00" class=" well low">GETTING LOW!</h2>
+      <h2 *ngIf="(keg.pints/124 * 100).toFixed(2) <= 10.00" class="well danger">DANGER! EMPTY SOON!</h2>
     </div>
   </div>
   `

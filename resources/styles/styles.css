@@ -17,21 +17,25 @@
 .full {
   color:green;
     text-shadow: 1.5px 1.5px 2px grey;
+    text-align: center;
 }
 
 .notFull {
   color:yellow;
   text-shadow: 1.5px 1.5px 2px grey;
+  text-align: center;
 }
 
 .low {
   color:orange;
   text-shadow: 1.5px 1.5px 2px grey;
+  text-align: center;
 }
 
 .danger {
   color:red;
   text-shadow: 1.5px 1.5px 2px grey;
+  text-align: center;
 }
 
 li {
