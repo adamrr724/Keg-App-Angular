@@ -1,5 +1,5 @@
 import { Component, EventEmitter } from 'angular2/core';
-// import { KegComponent } from './keg.component';
+import { KegComponent } from './keg.component';
 import { Keg } from './keg.model';
 // import { EditTaskDetailsComponent } from './edit-keg-details.component';
 // import { NewTaskComponent } from './new-task.component';
@@ -10,11 +10,11 @@ import { Keg } from './keg.model';
   inputs: ['kegList'],
   // outputs: ['onKegSelect'],
   // pipes: [DonePipe],
-  // directives: [TaskComponent, EditTaskDetailsComponent, NewTaskComponent],
+  directives: [KegComponent],
   template:
     `
     <ul>
-      <li *ngFor="#currentKeg of kegList">{{ currentKeg.name }}, ABV {{ currentKeg.ABV }}</li>
+      <keg-display *ngFor="#currentKeg of kegList" [keg]= "currentKeg"></keg-display>
     </ul>
     `
   // `
