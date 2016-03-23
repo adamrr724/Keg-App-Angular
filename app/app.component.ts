@@ -1,15 +1,16 @@
 import { Component, EventEmitter } from 'angular2/core';
-import { Keg } from '../app/keg.model.ts';
+import { Keg } from './keg.model';
+import { KegListComponent } from './keg-list.component';
 
 @Component({
   selector: 'my-app',
-  // directives: [TaskListComponent],
+  directives: [KegListComponent],
   template: `
     <div class="container">
-      <h1>To-Do List</h1>
+      <h1>Kegs</h1>
       <keg-list
         [kegList]="kegs"
-        (onTaskSelect)="taskWasSelected($event)">
+        (onKegSelect)="kegWasSelected($event)">
       </keg-list>
     <div>
   `

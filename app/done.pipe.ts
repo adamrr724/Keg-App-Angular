@@ -22,4 +22,3 @@ export class DonePipe implements PipeTransform {
     }
   }
 }
-}
