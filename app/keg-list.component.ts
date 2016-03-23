@@ -14,7 +14,11 @@ import { Keg } from './keg.model';
   template:
     `
     <ul>
-      <keg-display *ngFor="#currentKeg of kegList" [keg]= "currentKeg"></keg-display>
+      <keg-display
+        *ngFor="#currentKeg of kegList"
+        [keg]= "currentKeg"
+        (onKegPour)="refreshKeg($event)">
+        </keg-display>
     </ul>
     `
   // `
@@ -41,10 +45,24 @@ export class KegListComponent {
   constructor() {
     // this.onKegSelect = new EventEmitter();
   }
-  kegClicked(clickedKeg: Keg): void {
-    this.selectedKeg = clickedKeg;
-    // this.onKegSelect.emit(clickedKeg);
+  refreshKeg(newKeg: Keg) {
+    // console.log("event received and refreshKeg run");
+    // console.log("New Keg is", newKeg);
+    for(var keg of this.kegList) {
+      if (keg.name === newKeg.name) {
+        keg.type = newKeg.type;
+        keg.ABV = newKeg.ABV;
+        keg.price = newKeg.price;
+        keg.type = newKeg.type;
+        keg.pints = newKeg.pints;
+        // console.log("The edited keg is ", keg);
+      }
+    }
   }
+  // kegClicked(clickedKeg: Keg): void {
+  //   this.selectedKeg = clickedKeg;
+  //   // this.onKegSelect.emit(clickedKeg);
+  // }
   // createKeg(newKeg: Keg): void {
   //   this.kegList.push(
   //     new Keg(newKeg.description, this.kegList.length, newKeg.priority, newKeg.category)
