@@ -7,12 +7,14 @@ import { KegListComponent } from './keg-list.component';
   directives: [KegListComponent],
   template: `
     <div class="container">
-      <h1>Kegs</h1>
+      <h1>Bar Kegs App</h1>
+      <div class="container">
       <keg-list
         [kegList]="kegs"
         (onKegSelect)="kegWasSelected($event)">
       </keg-list>
-    <div>
+      </div>
+    </div>
   `
 })
 

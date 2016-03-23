@@ -9,6 +9,34 @@
   text-decoration: underline;
   text-align: center;
 }
+
+.filter {
+  margin-bottom: 5px;
+}
+
+.full {
+  color:green;
+    text-shadow: 1.5px 1.5px 2px grey;
+}
+
+.notFull {
+  color:yellow;
+  text-shadow: 1.5px 1.5px 2px grey;
+}
+
+.low {
+  color:orange;
+  text-shadow: 1.5px 1.5px 2px grey;
+}
+
+.danger {
+  color:red;
+  text-shadow: 1.5px 1.5px 2px grey;
+}
+
+li {
+  list-style: none;
+}
 /*.keg__name {
   float:left;
 }

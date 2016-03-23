@@ -13,7 +13,7 @@ import { Keg } from './keg.model';
     Out of Beer!
     </div>
     <div class="col-sm-4">
-      <h4>Type:</h4>
+      <h4>Types:</h4>
       <ul>
         <li *ngFor="#type of keg.type">{{ type }}</li>
       </ul>
@@ -22,7 +22,7 @@ import { Keg } from './keg.model';
       <h4>Info: </h4>
       <h5>ABV: {{ keg.ABV }}%</h5>
       <h5>Price: \${{ keg.price }}</h5>
-      <h5>Capacity: {{ keg.pints/124 * 100 }}%</h5>
+      <h5>Capacity: {{ (keg.pints/124 * 100).toFixed(2) }} %</h5>
     </div>
     <div class="col-sm-4">
       <button (click)="kegPour(keg)"
@@ -30,6 +30,10 @@ import { Keg } from './keg.model';
         [class.hidden]="keg.pints === 0">
         Pour Beer
       </button>
+      <h2 *ngIf="(keg.pints/124 * 100).toFixed(2) > 75" class="full">FULL</h2>
+      <h2 *ngIf="76 > (keg.pints/124 * 100).toFixed(2) && (keg.pints/124 * 100).toFixed(2) > 40" class="notFull">PLENTY LEFT</h2>
+      <h2 *ngIf="41 > (keg.pints/124 * 100).toFixed(2) && (keg.pints/124 * 100).toFixed(2) > 10" class="low">GETTING LOW!</h2>
+      <h2 *ngIf="(keg.pints/124 * 100).toFixed(2) <= 10" class="danger">DANGER! EMPTY SOON!</h2>
     </div>
   </div>
   `

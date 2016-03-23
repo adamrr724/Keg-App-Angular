@@ -13,11 +13,11 @@ export class LowPipe implements PipeTransform {
       return input;
     } else if (desiredLowState === "low") {
       return input.filter((keg) => {
-        return (keg.pints <= 10);
+        return (keg.pints <= 30);
       });
     } else if (desiredLowState === "notLow") {
       return input.filter((keg) => {
-        return (keg.pints > 10);
+        return (keg.pints > 30);
       });
     } else if (desiredLowState === "full") {
       return input.filter((keg) => {
