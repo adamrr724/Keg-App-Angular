@@ -1,16 +1,16 @@
 import { Component, EventEmitter } from 'angular2/core';
-import { TaskComponent } from './task.component';
-import { Task } from './task.model';
-import { EditTaskDetailsComponent } from './edit-task-details.component';
-import { NewTaskComponent } from './new-task.component';
-import {DonePipe} from './done.pipe';
+// import { TaskComponent } from './task.component';
+// import { Task } from './task.model';
+// import { EditTaskDetailsComponent } from './edit-task-details.component';
+// import { NewTaskComponent } from './new-task.component';
+// import {DonePipe} from './done.pipe';
 
 @Component({
   selector: 'task-list',
   inputs: ['taskList'],
   outputs: ['onTaskSelect'],
-  pipes: [DonePipe],
-  directives: [TaskComponent, EditTaskDetailsComponent, NewTaskComponent],
+  // pipes: [DonePipe],
+  // directives: [TaskComponent, EditTaskDetailsComponent, NewTaskComponent],
   template: `
   <select (change)="onChange($event.target.value)" class="filter">
     <option value="all">Show All</option>
@@ -28,24 +28,24 @@ import {DonePipe} from './done.pipe';
   `
 })
 export class TaskListComponent {
-  public taskList: Task[];
-  public onTaskSelect: EventEmitter<Task>;
-  public selectedTask: Task;
-  public filterDone: string = "notDone";
-  constructor() {
-    this.onTaskSelect = new EventEmitter();
-  }
-  taskClicked(clickedTask: Task): void {
-    this.selectedTask = clickedTask;
-    this.onTaskSelect.emit(clickedTask);
-  }
-  createTask(newTask: Task): void {
-    this.taskList.push(
-      new Task(newTask.description, this.taskList.length, newTask.priority, newTask.category)
-    );
-    console.log(this.taskList[this.taskList.length-1]);
-  }
-  onChange(filterOption) {
-    this.filterDone = filterOption;
-  }
+  // public taskList: Task[];
+  // public onTaskSelect: EventEmitter<Task>;
+  // public selectedTask: Task;
+  // public filterDone: string = "notDone";
+  // constructor() {
+  //   this.onTaskSelect = new EventEmitter();
+  // }
+  // taskClicked(clickedTask: Task): void {
+  //   this.selectedTask = clickedTask;
+  //   this.onTaskSelect.emit(clickedTask);
+  // }
+  // createTask(newTask: Task): void {
+  //   this.taskList.push(
+  //     new Task(newTask.description, this.taskList.length, newTask.priority, newTask.category)
+  //   );
+  //   console.log(this.taskList[this.taskList.length-1]);
+  // }
+  // onChange(filterOption) {
+  //   this.filterDone = filterOption;
+  // }
 }

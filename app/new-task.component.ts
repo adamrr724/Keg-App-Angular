@@ -1,5 +1,5 @@
 import {Component, EventEmitter} from 'angular2/core';
-import {Task} from './task.model';
+// import {Task} from './task.model';
 
 @Component({
   selector: 'new-task',
@@ -26,13 +26,13 @@ import {Task} from './task.model';
 })
 
 export class NewTaskComponent {
-  public onSubmitNewTask: EventEmitter<Task>;
-  constructor(){
-    this.onSubmitNewTask = new EventEmitter();
-  }
-  addTask(userDescription: HTMLInputElement, userPriority: HTMLSelectElement, userCategory: HTMLSelectElement){
-    var newTask: Task = new Task(userDescription.value, -1, userPriority.value, userCategory.value);
-    this.onSubmitNewTask.emit(newTask);
-    newTask.value = "";
-  }
+  // public onSubmitNewTask: EventEmitter<Task>;
+  // constructor(){
+  //   this.onSubmitNewTask = new EventEmitter();
+  // }
+  // addTask(userDescription: HTMLInputElement, userPriority: HTMLSelectElement, userCategory: HTMLSelectElement){
+  //   var newTask: Task = new Task(userDescription.value, -1, userPriority.value, userCategory.value);
+  //   this.onSubmitNewTask.emit(newTask);
+  //   newTask.value = "";
+  // }
 }

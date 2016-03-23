@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-import {Task} from './task.model';
+
 
 @Component({
   selector: 'edit-task-details',
@@ -13,5 +13,5 @@ import {Task} from './task.model';
 })
 
 export class EditTaskDetailsComponent {
-  public task: Task;
+  // public task: Task;
 }
