@@ -41,6 +41,16 @@
 li {
   list-style: none;
 }
+
+.keg-form {
+  margin-top: 10px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.end {
+  margin-right: 30px;
+}
 /*.keg__name {
   float:left;
 }

@@ -25,7 +25,7 @@ import { Keg } from './keg.model';
       <h5>Capacity: {{ (keg.pints/124 * 100).toFixed(2) }} %</h5>
     </div>
     <div class="col-sm-4">
-      <button (click)="kegPour(keg)"
+      <button class="btn-primary" (click)="kegPour(keg)"
         name="button"
         [class.hidden]="keg.pints === 0">
         Pour Beer
