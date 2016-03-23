@@ -6,6 +6,6 @@ export class Keg {
     public ABV: number,
     public price: number
   ) {
-    this.pints = 12;
+    this.pints = 124;
     }
 }

@@ -13,6 +13,12 @@ import {LowPipe} from './low.pipe';
   directives: [KegComponent],
   template:
     `
+    <select (change)="onChange($event.target.value)" class="filter">
+      <option value="none" selected="selected">Show All</option>
+      <option value="full">Freshly Tapped</option>
+      <option value="notLow">Not Low</option>
+      <option value="low">Low Kegs</option>
+    </select>
     <ul>
       <keg-display
         *ngFor="#currentKeg of kegList | low:filterLow"
@@ -21,12 +27,8 @@ import {LowPipe} from './low.pipe';
         </keg-display>
     </ul>
     `
-  // `
-  // <select (change)="onChange($event.target.value)" class="filter">
-  //   <option value="all">Show All</option>
-  //   <option value="done">Show Done</option>
-  //   <option value="notDone" selected="selected">Show Not Done</option>
-  // </select>
+
+
   // <task-display *ngFor="#currentTask of taskList | done:filterDone"
   //   (click)="taskClicked(currentTask)"
   //   [class.selected]="currentTask === selectedTask"
@@ -69,7 +71,7 @@ export class KegListComponent {
   //   );
   //   console.log(this.kegList[this.kegList.length-1]);
   // }
-  // onChange(filterOption) {
-  //   this.filterDone = filterOption;
-  // }
+  onChange(filterOption) {
+    this.filterLow = filterOption;
+  }
 }
