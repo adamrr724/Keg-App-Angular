@@ -4,3 +4,18 @@
 .empty {
   background-color: red;
 }
+.keg__name {
+  margin-top: 0;
+  text-decoration: underline;
+  text-align: center;
+}
+/*.keg__name {
+  float:left;
+}
+.keg__info {
+  float: right;
+  clear: right;
+}
+.well {
+  clear:both;
+}*/
