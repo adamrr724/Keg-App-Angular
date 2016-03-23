@@ -6,11 +6,13 @@ import { Keg } from './keg.model';
     inputs: ['keg'],
   template: `
   <div class="well">
-    <h3>Beer Name: {{ keg.name }}</h3>
-    <h4>ABV: {{ keg.ABV }}</h4>
+    <h3>{{ keg.name }}</h3>
+    <h4>ABV: {{ keg.ABV }}%</h4>
     <ul>
       <li *ngFor="#type of keg.type">{{ type }}</li>
     </ul>
+    <h4>Price: \${{ keg.price }}</h4>
+    <h4>Capacity: {{ keg.pints }}/124 Pints</h4>
   </div>
   `
 })
