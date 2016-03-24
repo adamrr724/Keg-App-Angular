@@ -4,24 +4,33 @@ import { Keg } from './keg.model';
 import { EditKegDetailsComponent } from './edit-keg-details.component';
 import { NewKegComponent } from './new-keg.component';
 import {LowPipe} from './low.pipe';
+import {TypePipe} from './type.pipe';
 
 @Component({
   selector: 'keg-list',
   inputs: ['kegList'],
   outputs: ['onKegSelect'],
-  pipes: [LowPipe],
+  pipes: [LowPipe, TypePipe],
   directives: [KegComponent, NewKegComponent, EditKegDetailsComponent],
   template:
     `
-    <select (change)="onChange($event.target.value)" class="filter">
+    <select (change)="onChangeLow($event.target.value)" class="filter">
       <option value="none" selected="selected">Show All</option>
       <option value="full">Freshly Tapped</option>
       <option value="notLow">Not Low</option>
       <option value="low">Low Kegs</option>
     </select>
+    <select (change)="onChangeType($event.target.value)" class="filter">
+      <option value="none" selected="selected">Show All</option>
+      <option value="IPA">IPA</option>
+      <option value="Pilsner">Pilsner</option>
+      <option value="Hefeweisen">Hefeweisen</option>
+      <option value="Light Beer">Light Beer</option>
+      <option value="Stout">Stout</option>
+    </select>
     <ul>
       <keg-display
-        *ngFor="#currentKeg of kegList | low:filterLow"
+        *ngFor="#currentKeg of kegList | low:filterLow | type:filterType"
         (click)="kegClicked(currentKeg)"
         [class.selected]="currentKeg === selectedKeg"
         [keg]= "currentKeg"
@@ -50,7 +59,8 @@ export class KegListComponent {
   public kegList: Keg[];
   public onKegSelect: EventEmitter<Keg>;
   public selectedKeg: Keg;
-  public filterLow: string = "notLow";
+  public filterLow: string = "none";
+  public filterType: string = "none";
   constructor() {
     this.onKegSelect = new EventEmitter();
   }
@@ -77,7 +87,10 @@ export class KegListComponent {
       new Keg(newKeg.name, newKeg.type, newKeg.ABV, newKeg.price)
     );
   }
-  onChange(filterOption) {
+  onChangeLow(filterOption) {
     this.filterLow = filterOption;
+  }
+  onChangeType(filterOption) {
+    this.filterType = filterOption;
   }
 }
